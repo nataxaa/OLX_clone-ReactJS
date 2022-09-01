@@ -2,6 +2,8 @@ import { useState } from "react";
 import { PageContainer, PageTitle } from "../../../style/global";
 import { SigninArea } from "./style";
 import OlxApi from '../../../helpers/OlxApi'
+import { doLogin } from "../../../helpers/authHandler";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -10,20 +12,27 @@ export function Signin(){
     const api = OlxApi()
     const [email, setEmail] = useState<string>()
     const [password, setPassword] = useState<string>()
+    const [remember, setRemember] = useState(false)
     const [check , setCheck] = useState<boolean>(false)
     const [disabled, setDisabled] = useState<boolean>(false)
     const [error, setError] = useState('')
-
+    const navigate = useNavigate(); 
+    
     async function handleSubmit(e:any){
         e.preventDefault()
+        setDisabled(true)
 
-        const json = await api.login(email as any, password as any)
-
+        const json = await api.login(email, password)
+        
         if(json.error){
             setError(json.error)
+        }else{
+            doLogin(json.token, remember)
+            navigate("/")
         }
-
+        
     }
+   
 
 
     return(
@@ -35,9 +44,10 @@ export function Signin(){
                             <div className="area-title">E-mail</div>
                             <div className="area-input">
                                 <input
-                                 type="email"
-                                 value={email}
-                                 onChange={e=>setEmail(e.target.value)}    
+                                    disabled={disabled}
+                                    type="email"
+                                    value={email}
+                                    onChange={e=>setEmail(e.target.value)}    
                                 />
                             </div>
                         </label>
@@ -45,9 +55,10 @@ export function Signin(){
                             <div className="area-title">Senha</div>
                             <div className="area-input">
                                 <input
-                                 type="password"
-                                 value={password}
-                                 onChange={e=>setPassword(e.target.value)}
+                                    disabled={disabled}
+                                    type="password"
+                                    value={password}
+                                    onChange={e=>setPassword(e.target.value)}
                                  />
                             </div>
                         </label>
@@ -56,14 +67,14 @@ export function Signin(){
                                 <input 
                                     className="check"
                                     type="checkbox"
-                                    
+                                    disabled={disabled}
                                     />
                             </div>
                             <p>Lembrar Senha</p>
                         </label>
                         <label>
                             <div className="area-title"></div>
-                            <div className="area-input"><button>Fazer Login</button></div>
+                            <div className="area-input"><button onClick={()=>handleSubmit}>Fazer Login</button></div>
                         </label>
                     </form>
                 </SigninArea>
