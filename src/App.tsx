@@ -7,6 +7,7 @@ import { Home } from "./components/Pages/Home";
 import { Template } from "./style/global";
 import { NotFound } from "./components/Pages/NotFound";
 import { Signin } from "./components/Pages/Signin";
+import Cart from "./context/Cart";
 
 
 

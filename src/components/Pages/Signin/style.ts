@@ -49,3 +49,10 @@ button{
 }
  
 `
+
+export const ErrorMensagem = styled.div`
+
+color:black ;
+background-color:red ;
+
+`

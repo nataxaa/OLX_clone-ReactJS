@@ -5,6 +5,7 @@ import { GlobalStyle } from './style/global';
 import {createStore} from 'redux'
 import { Provider } from 'react-redux';
 import Reducers from './Reducers'
+import CartProvider from './context/Cart';
 
 
 const store = createStore(Reducers)
@@ -16,10 +17,12 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
+    <CartProvider>
     <Provider store={store}>
     <App />
     <GlobalStyle/>
     </Provider>
+    </CartProvider>
   </React.StrictMode>
 );
 

@@ -1,15 +1,18 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { PageContainer, PageTitle } from "../../../style/global";
-import { SigninArea } from "./style";
+import { ErrorMensagem, SigninArea } from "./style";
 import OlxApi from '../../../helpers/OlxApi'
 import { doLogin } from "../../../helpers/authHandler";
 import { useNavigate } from "react-router-dom";
+import { CartContext } from "../../../context/Cart";
 
 
 
 
 export function Signin(){
-    const api = OlxApi()
+
+    const  {login, authenticated}:any = useContext(CartContext)
+
     const [email, setEmail] = useState<string>()
     const [password, setPassword] = useState<string>()
     const [remember, setRemember] = useState(false)
@@ -18,17 +21,14 @@ export function Signin(){
     const [error, setError] = useState('')
     const navigate = useNavigate(); 
     
-    async function handleSubmit(e:any){
+     function handleSubmit(e:any){
         e.preventDefault()
-        setDisabled(true)
-
-        const json = await api.login(email, password)
-        
-        if(json.error){
-            setError(json.error)
-        }else{
-            doLogin(json.token, remember)
+        login(email, password)
+        console.log("submit", {email, password})
+        if(authenticated){
             navigate("/")
+        }else{
+            alert("usúario não cadastrado ou senha errada")
         }
         
     }
@@ -40,6 +40,7 @@ export function Signin(){
             <PageTitle>Login</PageTitle>
                 <SigninArea>
                     <form>
+                        <p>{String(authenticated)}</p>
                         <label>
                             <div className="area-title">E-mail</div>
                             <div className="area-input">
@@ -48,6 +49,7 @@ export function Signin(){
                                     type="email"
                                     value={email}
                                     onChange={e=>setEmail(e.target.value)}    
+                                    required
                                 />
                             </div>
                         </label>
@@ -59,6 +61,7 @@ export function Signin(){
                                     type="password"
                                     value={password}
                                     onChange={e=>setPassword(e.target.value)}
+                                    required
                                  />
                             </div>
                         </label>
@@ -74,7 +77,7 @@ export function Signin(){
                         </label>
                         <label>
                             <div className="area-title"></div>
-                            <div className="area-input"><button onClick={()=>handleSubmit}>Fazer Login</button></div>
+                            <div className="area-input"><button onClick={handleSubmit}>Fazer Login</button></div>
                         </label>
                     </form>
                 </SigninArea>
