@@ -1,11 +1,16 @@
 import { Container } from "./style";
 import {Link} from 'react-router-dom'
 import { isLogged } from "../../helpers/authHandler";
+import { useContext } from "react";
+import { CartContext } from "../../context/Cart";
+import { Button } from "../../style/global";
+
 
 
 export function Header(){
 
     let logged = false //isLogged()
+    const  {login, authenticated, Logout}:any = useContext(CartContext)
 
     return(
         <Container>
@@ -19,19 +24,23 @@ export function Header(){
            </Link>
 
             <div>
-                {logged && (
+                {authenticated && (
                     <ul>
                         <li><Link className="link" to={'/mycount'}>Minha Conta</Link></li>
-                        <li><Link className="link" to={'/logout'}>Sair</Link></li>
+                        <li><button onClick={Logout}>Sair</button></li>
                         <li><button><Link className="link-button" to={'/post-an-ad'}>Postar um anúncio</Link></button></li>
                     </ul>
                 )}
                 
-                {!logged && (
+                {!authenticated && (
                     <ul>
                         <li><Link className="link" to={'/signin'}>Login</Link></li>
-                        <li><Link className="link" to={'signout'}>Cadastrar</Link></li>
-                        <li><button><Link className="link-button" to={'/post-an-ad'}>Postar um anúncio</Link></button></li>
+                        <li><Link className="link" to={'/Registration'}>Cadastrar</Link></li>
+                        <li>
+                            <Button>
+                                <Link className="link-button" to={'/post-an-ad'}>Postar um anúncio</Link>
+                            </Button>
+                        </li>
                     </ul>
                 )}
 

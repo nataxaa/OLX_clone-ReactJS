@@ -21,16 +21,13 @@ export function Signin(){
     const [error, setError] = useState('')
     const navigate = useNavigate(); 
     
-     function handleSubmit(e:any){
+      function handleSubmit(e:any){
         e.preventDefault()
         login(email, password)
         console.log("submit", {email, password})
         if(authenticated){
             navigate("/")
-        }else{
-            alert("usúario não cadastrado ou senha errada")
         }
-        
     }
    
 
@@ -40,7 +37,6 @@ export function Signin(){
             <PageTitle>Login</PageTitle>
                 <SigninArea>
                     <form>
-                        <p>{String(authenticated)}</p>
                         <label>
                             <div className="area-title">E-mail</div>
                             <div className="area-input">

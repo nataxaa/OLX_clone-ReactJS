@@ -29,5 +29,17 @@ margin-top:2rem ;
 `
 export const PageTitle = styled.h1`
 color:#FFF ;
+
+`
+export const Button = styled.button`
+background-color:#FF640A ;
+    border:none ;
+    padding:7px ;
+    border-radius:5px ;
+    border:1px solid black ;
+    cursor: pointer;
+    :hover{
+        opacity:0.8 ;
+    }
 `
 

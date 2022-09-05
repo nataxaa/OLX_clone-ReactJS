@@ -8,6 +8,7 @@ import { Template } from "./style/global";
 import { NotFound } from "./components/Pages/NotFound";
 import { Signin } from "./components/Pages/Signin";
 import Cart from "./context/Cart";
+import { Registration } from "./components/Pages/Registration";
 
 
 
@@ -22,8 +23,8 @@ export function App(props:any) {
              <Route path="/about" element={<About/>}/>
              <Route element={<NotFound/>}/>
              <Route path="/Signin" element={<Signin/>}/>
+             <Route path="/Registration" element={<Registration/>}/>
            </Routes>
-         <Footer/>
        </Template>
       </Router>
     </div>

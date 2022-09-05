@@ -2,15 +2,16 @@ import styled from 'styled-components'
 
 export const SigninArea = styled.div`
 
- margin:3rem auto ;
+ margin:2rem auto ;
  width:fit-content;
 
  input{
-    border:none ;
-    padding:8px ;
-    border-radius:10px ;
-    margin-bottom:10px ;
-    width:15rem ;
+   width:16rem ;
+        margin-bottom:1rem ;
+        padding:8px ;
+        border-radius:5px ;
+        outline:none ;
+        border:1px solid black ;
  }
 
  form{
