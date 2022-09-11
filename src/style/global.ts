@@ -18,17 +18,21 @@ export const GlobalStyle = createGlobalStyle`
 
 export const Template = styled.div`
 font-family:'Roboto', sans-serif;
-background-color:#5533FF;
-height: 100vh ;
+background-color:#FFFACC;
+height:100vh ;
+
 
 `
 export const PageContainer = styled.div`
 max-width:1200px ;
 margin:auto ;
 margin-top:2rem ;
+
+
+
 `
 export const PageTitle = styled.h1`
-color:#FFF ;
+color:#000 ;
 
 `
 export const Button = styled.button`

@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -8,7 +9,7 @@ export const CartContext = createContext({});
 
 export default function CartProvider({children}:any){
 
-
+    
     const [user, setUser] = useState<any>()
     const [loading, setLoading] = useState(true)
     const [teste, setTeste] = useState([

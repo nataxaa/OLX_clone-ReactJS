@@ -26,9 +26,9 @@ export function Header(){
             <div>
                 {authenticated && (
                     <ul>
-                        <li><Link className="link" to={'/mycount'}>Minha Conta</Link></li>
+                        <li><Link className="link" to={'/MyCount'}>Minha Conta</Link></li>
                         <li><button onClick={Logout}>Sair</button></li>
-                        <li><button><Link className="link-button" to={'/post-an-ad'}>Postar um anúncio</Link></button></li>
+                        <li><button><Link className="link-button" to={'/AddPost'}>Postar um anúncio</Link></button></li>
                     </ul>
                 )}
                 
@@ -38,7 +38,7 @@ export function Header(){
                         <li><Link className="link" to={'/Registration'}>Cadastrar</Link></li>
                         <li>
                             <Button>
-                                <Link className="link-button" to={'/post-an-ad'}>Postar um anúncio</Link>
+                                <Link className="link-button" to={'/AddPost'}>Postar um anúncio</Link>
                             </Button>
                         </li>
                     </ul>

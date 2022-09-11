@@ -14,6 +14,11 @@ export const SigninArea = styled.div`
         border:1px solid black ;
  }
 
+ div.area-input{
+    align-items:center ;
+    
+ }
+
  form{
     display:flex ;
     flex-direction:column ;
@@ -27,10 +32,11 @@ export const SigninArea = styled.div`
     width:12rem ;
     margin-bottom:10px ;
  }
+ label.test{
+    align-items:center ;
+ }
 
- div.area-input-check{
-   width:1.5rem ;
-}
+ 
 input.check{
     width:1.5rem ;
     margin-top:9px ;
@@ -44,6 +50,8 @@ button{
     cursor: pointer ;
     transition:0.1s ;
     color:#FFF ;
+    margin-left:3.4rem ;
+    margin-top:10px ;
     :hover{
         opacity:0.9 ;
     }

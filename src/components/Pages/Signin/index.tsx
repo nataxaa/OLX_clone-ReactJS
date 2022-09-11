@@ -3,7 +3,7 @@ import { PageContainer, PageTitle } from "../../../style/global";
 import { ErrorMensagem, SigninArea } from "./style";
 import OlxApi from '../../../helpers/OlxApi'
 import { doLogin } from "../../../helpers/authHandler";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { CartContext } from "../../../context/Cart";
 
 
@@ -61,18 +61,8 @@ export function Signin(){
                                  />
                             </div>
                         </label>
-                        <label className="checkbox">
-                            <div className="area-input-check">
-                                <input 
-                                    className="check"
-                                    type="checkbox"
-                                    disabled={disabled}
-                                    />
-                            </div>
-                            <p>Lembrar Senha</p>
-                        </label>
-                        <label>
-                            <div className="area-title"></div>
+                        <label className="test">
+                            <div className="area-title"><p>Não tem conta? <Link to={'/Registration'}>clique aqui</Link></p></div>
                             <div className="area-input"><button onClick={handleSubmit}>Fazer Login</button></div>
                         </label>
                     </form>
